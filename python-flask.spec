@@ -15,7 +15,7 @@ BuildRequires:  python-jinja2
 BuildRequires:  python-distribute
 Requires:       python-werkzeug python-sphinx
 Requires:       python-jinja2
-dRequires:      python-distribute
+Requires:       python-distribute
 %py_requires -d
 
 %description
