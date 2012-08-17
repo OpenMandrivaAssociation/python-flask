@@ -12,8 +12,10 @@ Source0:        http://pypi.python.org/packages/source/F/Flask/%{srcname}-%{srcv
 BuildArch:      noarch
 BuildRequires:  python-werkzeug python-sphinx
 BuildRequires:  python-jinja2
+BuildRequires:  python-distribute
 Requires:       python-werkzeug python-sphinx
 Requires:       python-jinja2
+dRequires:      python-distribute
 %py_requires -d
 
 %description
