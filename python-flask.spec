@@ -61,3 +61,11 @@ rm -rf examples/jqueryexample/*.pyc
 %{python_sitelib}/*.egg-info
 %{python_sitelib}/*.egg-link
 %{python_sitelib}/flask
+
+
+%changelog
+* Fri Aug 17 2012 Paulo Andrade <pcpa@mandriva.com.br> 0.9-1
++ Revision: 815244
+- Import python-flask (based on fedora package)
+- Import python-flask package (based on fedora package)
+
