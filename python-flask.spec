@@ -1,8 +1,8 @@
 %global srcname Flask
-%global srcversion 0.9
+%global srcversion 0.10.1
 
 Name:           python-flask
-Version:        0.9
+Version:        0.10.1
 Release:        1
 Summary:        A micro-framework for Python based on Werkzeug, Jinja 2 and good intentions
 Group:          Development/Python
@@ -11,10 +11,12 @@ URL:            http://flask.pocoo.org/
 Source0:        http://pypi.python.org/packages/source/F/Flask/%{srcname}-%{srcversion}.tar.gz
 BuildArch:      noarch
 BuildRequires:  python-werkzeug python-sphinx
+BuildRequires:	python-itsdangerous
 BuildRequires:  python-jinja2
 BuildRequires:  python-distribute
 Requires:       python-werkzeug python-sphinx
 Requires:       python-jinja2
+Requires:	python-itsdangerous
 Requires:       python-distribute
 %py_requires -d
 
@@ -30,7 +32,7 @@ authentication technologies and more.
 
 %prep
 %setup -q -n %{srcname}-%{srcversion}
-%{__sed} -i "1i __requires__ = ['Jinja2>=2.4']" setup.py
+%{__sed} -i "/platforms/ a\    requires=['Jinja2 (>=2.4)']," setup.py
 
 %build
 %{__python} setup.py build
@@ -61,11 +63,3 @@ rm -rf examples/jqueryexample/*.pyc
 %{python_sitelib}/*.egg-info
 %{python_sitelib}/*.egg-link
 %{python_sitelib}/flask
-
-
-%changelog
-* Fri Aug 17 2012 Paulo Andrade <pcpa@mandriva.com.br> 0.9-1
-+ Revision: 815244
-- Import python-flask (based on fedora package)
-- Import python-flask package (based on fedora package)
-
