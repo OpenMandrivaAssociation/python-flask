@@ -18,7 +18,7 @@ Requires:       python-werkzeug python-sphinx
 Requires:       python-jinja2
 Requires:	python-itsdangerous
 Requires:       python-distribute
-%py_requires -d
+BuildRequires:	python-devel
 
 %description
 Flask is called a “micro-framework” because the idea to keep the core
