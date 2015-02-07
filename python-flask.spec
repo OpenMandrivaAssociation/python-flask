@@ -60,6 +60,8 @@ rm -rf examples/minitwit/*.pyc
 rm -rf examples/flaskr/*.pyc
 rm -rf examples/jqueryexample/*.pyc
 
+find %{buildroot} -size 0 -delete
+
 %check
 %{__python} setup.py test
 
