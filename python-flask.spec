@@ -71,5 +71,5 @@ find %{buildroot} -size 0 -delete
 %{python_sitelib}/*.egg-info
 %{python_sitelib}/*.egg-link
 %{python_sitelib}/flask
-%{python_sitelib}/Werkzeug-%{srcversion}-py3.4.egg/
-%{python_sitelib}/itsdangerous-0.24-py3.4.egg/
+%{python_sitelib}/Werkzeug-%{srcversion}-py3.4.egg/*
+%{python_sitelib}/itsdangerous-0.24-py3.4.egg/*
