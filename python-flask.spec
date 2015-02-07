@@ -63,3 +63,5 @@ rm -rf examples/jqueryexample/*.pyc
 %{python_sitelib}/*.egg-info
 %{python_sitelib}/*.egg-link
 %{python_sitelib}/flask
+%{python_sitelib}/Werkzeug-0.10.1-py3.4.egg/
+%{python_sitelib}/itsdangerous-0.24-py3.4.egg/
