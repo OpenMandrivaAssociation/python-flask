@@ -10,15 +10,21 @@ License:        BSD
 URL:            http://flask.pocoo.org/
 Source0:        http://pypi.python.org/packages/source/F/Flask/%{srcname}-%{srcversion}.tar.gz
 BuildArch:      noarch
-BuildRequires:  python-werkzeug python-sphinx
+
+BuildRequires:  python-werkzeug 
+BuildRequires:  python-sphinx
+BuildRequires:  graphviz
 BuildRequires:	python-itsdangerous
 BuildRequires:  python-jinja2
 BuildRequires:  python-distribute
-Requires:       python-werkzeug python-sphinx
-Requires:       python-jinja2
-Requires:	python-itsdangerous
-Requires:       python-distribute
 BuildRequires:	python-devel
+
+Requires:       python-werkzeug 
+Requires:       python-sphinx
+Requires:       python-jinja2
+Requires:	    python-itsdangerous
+Requires:       python-distribute
+
 
 %description
 Flask is called a “micro-framework” because the idea to keep the core
@@ -63,5 +69,5 @@ rm -rf examples/jqueryexample/*.pyc
 %{python_sitelib}/*.egg-info
 %{python_sitelib}/*.egg-link
 %{python_sitelib}/flask
-%{python_sitelib}/Werkzeug-0.10.1-py3.4.egg/
+%{python_sitelib}/Werkzeug-%{srcversion}-py3.4.egg/
 %{python_sitelib}/itsdangerous-0.24-py3.4.egg/
