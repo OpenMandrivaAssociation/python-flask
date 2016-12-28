@@ -1,0 +1,66 @@
+From 5e8dd8b2872584483e7fb7506337a7d940ea8cc0 Mon Sep 17 00:00:00 2001
+From: Chason Chaffin <cchaffin@mediatemple.net>
+Date: Sun, 4 Aug 2013 01:42:23 -0700
+Subject: [PATCH] Changed sort_json test to test str sorting
+
+Tests when simplejson was installed were failing because of a change in
+how it sorted in v3.0.0. This change first tests it via normal int
+sorting for stdlib json then if that fails, it tests against str sorting
+for simplejson.
+---
+ flask/testsuite/helpers.py | 34 ++++++++++++++++++++++++++++++++--
+ 1 file changed, 32 insertions(+), 2 deletions(-)
+
+diff --git a/flask/testsuite/helpers.py b/flask/testsuite/helpers.py
+index 636f67f..7de70c0 100644
+--- a/flask/testsuite/helpers.py
++++ b/flask/testsuite/helpers.py
+@@ -173,7 +173,33 @@ def index():
+         c = app.test_client()
+         rv = c.get('/')
+         lines = [x.strip() for x in rv.data.strip().decode('utf-8').splitlines()]
+-        self.assert_equal(lines, [
++        sorted_by_str = [
++            '{',
++            '"values": {',
++            '"0": "foo",',
++            '"1": "foo",',
++            '"10": "foo",',
++            '"11": "foo",',
++            '"12": "foo",',
++            '"13": "foo",',
++            '"14": "foo",',
++            '"15": "foo",',
++            '"16": "foo",',
++            '"17": "foo",',
++            '"18": "foo",',
++            '"19": "foo",',
++            '"2": "foo",',
++            '"3": "foo",',
++            '"4": "foo",',
++            '"5": "foo",',
++            '"6": "foo",',
++            '"7": "foo",',
++            '"8": "foo",',
++            '"9": "foo"',
++            '}',
++            '}'
++        ]
++        sorted_by_int = [
+             '{',
+             '"values": {',
+             '"0": "foo",',
+@@ -198,8 +224,12 @@ def index():
+             '"19": "foo"',
+             '}',
+             '}'
+-        ])
++        ]
+ 
++        try:
++            self.assert_equal(lines, sorted_by_int)
++        except AssertionError:
++            self.assert_equal(lines, sorted_by_str)
+ 
+ class SendfileTestCase(FlaskTestCase):
+ 
