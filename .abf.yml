@@ -1,2 +1,4 @@
-sources:
+removed_sources:
   Flask-0.10.1.tar.gz: d3d078262b053f4438e2ed3fd6f9b923c2c92172
+sources:
+  Flask-0.12.2.tar.gz: 8193757ded6a4f0e7c9a3ce291bf3ae3a1d402c5

@@ -2,13 +2,13 @@
 %global srcversion 0.10.1
 
 Name:           python-flask
-Version:        0.10.1
-Release:        3
+Version:        0.12.2
+Release:        1
 Summary:        A micro-framework for Python based on Werkzeug, Jinja 2 and good intentions
 Group:          Development/Python
 License:        BSD
 URL:            http://flask.pocoo.org/
-Source0:        http://pypi.python.org/packages/source/F/Flask/%{srcname}-%{srcversion}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/F/Flask/Flask-%{version}.tar.gz
 Patch1:		fix-test.patch
 BuildArch:      noarch
 
@@ -64,23 +64,23 @@ authentication technologies and more.
 cp -a . %py2dir
 
 %build
-%{__python} setup.py build
+python setup.py build
 
 pushd %py2dir
-%{__python2} setup.py build
+python setup.py build
 
 %install
-%{__python} setup.py install -O1 --skip-build --root %{buildroot}
+python setup.py install -O1 --skip-build --root %{buildroot}
 
 # Need to install flask in the setuptools "develop" mode to build docs
 # The BuildRequires on Werkzeug, Jinja2 and Sphinx is due to this as well.
-export PYTHONPATH=%{buildroot}%{python_sitelib}
-%{__python} setup.py develop --install-dir %{buildroot}%{python_sitelib}
+export PYTHONPATH=%{buildroot}%{py_puresitedir}
+python setup.py develop --install-dir %{buildroot}%{py_puresitedir}
 make -C docs html
 
-rm -rf %{buildroot}%{python_sitelib}/site.py
-rm -rf %{buildroot}%{python_sitelib}/site.py[co]
-rm -rf %{buildroot}%{python_sitelib}/easy-install.pth
+rm -rf %{buildroot}%{py_puresitedir}/site.py
+rm -rf %{buildroot}%{py_puresitedir}/site.py[co]
+rm -rf %{buildroot}%{py_puresitedir}/easy-install.pth
 rm -rf docs/_build/html/.buildinfo
 rm -rf examples/minitwit/*.pyc
 rm -rf examples/flaskr/*.pyc
@@ -89,21 +89,20 @@ rm -rf examples/jqueryexample/*.pyc
 find %{buildroot} -size 0 -delete
 
 pushd %py2dir
-%{__python2} setup.py install -O1 --skip-build --root %{buildroot}
+python setup.py install -O1 --skip-build --root %{buildroot}
 
 %check
-%{__python} setup.py test
+python setup.py test
 
 %files
 %doc AUTHORS LICENSE PKG-INFO CHANGES README
 %doc docs/_build/html examples
-%{python_sitelib}/*.egg-info
-%{python_sitelib}/*.egg-link
-%{python_sitelib}/flask
+%{py_puresitedir}/*.egg-info
+%{py_puresitedir}/*.egg-link
+%{py_puresitedir}/flask
 
 %files -n python2-flask
 %doc AUTHORS LICENSE PKG-INFO CHANGES README
 %doc docs/_build/html examples
-%{python2_sitelib}/*.egg-info
-%{python2_sitelib}/flask
-
+%{py_puresitedir}/*.egg-info
+%{py_puresitedir}/flask
