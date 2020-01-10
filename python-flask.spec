@@ -59,7 +59,7 @@ authentication technologies and more.
 %setup -q -n %{srcname}-%{srcversion}
 %{__sed} -i "/platforms/ a\    requires=['Jinja2 (>=2.4)']," setup.py
 
-%apply_patches
+%autopatch -p1
 
 cp -a . %py2dir
 
