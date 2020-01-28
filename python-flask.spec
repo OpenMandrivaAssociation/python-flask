@@ -1,5 +1,4 @@
 %global srcname Flask
-%global srcversion 0.10.1
 
 Name:           python-flask
 Version:        1.1.1
@@ -8,7 +7,7 @@ Summary:        A micro-framework for Python based on Werkzeug, Jinja 2 and good
 Group:          Development/Python
 License:        BSD
 URL:            http://flask.pocoo.org/
-Source0:        http://pypi.python.org/packages/source/F/Flask/%{srcname}-%{srcversion}.tar.gz
+Source0:        http://pypi.python.org/packages/source/F/Flask/%{srcname}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:	graphviz
@@ -36,7 +35,7 @@ relational mappers, form validation, upload handling, various open
 authentication technologies and more.
 
 %prep
-%setup -q -n %{srcname}-%{srcversion}
+%setup -q -n %{srcname}-%{version}
 %{__sed} -i "/platforms/ a\    requires=['Jinja2 (>=2.4)']," setup.py
 
 %autopatch -p1
