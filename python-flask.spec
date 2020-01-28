@@ -35,38 +35,20 @@ relational mappers, form validation, upload handling, various open
 authentication technologies and more.
 
 %prep
-%setup -q -n %{srcname}-%{version}
-%{__sed} -i "/platforms/ a\    requires=['Jinja2 (>=2.4)']," setup.py
+%autosetup -n %{srcname}-%{version}
 
-%autopatch -p1
+# drop bundled egg-info
+rm -rf Flask.egg-info/
 
 %build
-%{__python} setup.py build
+%py_build
 
 %install
-%{__python} setup.py install -O1 --skip-build --root %{buildroot}
-
-# Need to install flask in the setuptools "develop" mode to build docs
-# The BuildRequires on Werkzeug, Jinja2 and Sphinx is due to this as well.
-export PYTHONPATH=%{buildroot}%{python_sitelib}
-%{__python} setup.py develop --install-dir %{buildroot}%{python_sitelib}
-make -C docs html
-
-rm -rf %{buildroot}%{python_sitelib}/site.py
-rm -rf %{buildroot}%{python_sitelib}/site.py[co]
-rm -rf %{buildroot}%{python_sitelib}/easy-install.pth
-rm -rf docs/_build/html/.buildinfo
-rm -rf examples/minitwit/*.pyc
-rm -rf examples/flaskr/*.pyc
-rm -rf examples/jqueryexample/*.pyc
-
-find %{buildroot} -size 0 -delete
+%py_install
 
 %files
-%doc AUTHORS LICENSE PKG-INFO CHANGES README
-%doc docs/_build/html examples
+%license LICENSE.rst
+%doc CHANGES.rst README.rst
+%{_bindir}/%{modname}*
 %{python_sitelib}/*.egg-info
-%{python_sitelib}/*.egg-link
 %{python_sitelib}/flask
-
-
