@@ -12,17 +12,17 @@ BuildArch:      noarch
 
 BuildRequires:	graphviz
 
-#BuildRequires:  python-werkzeug 
+BuildRequires:  python-werkzeug 
 BuildRequires:  python-sphinx
-#BuildRequires:	python-itsdangerous
+BuildRequires:	python-itsdangerous
 BuildRequires:  python-jinja2
 BuildRequires:	python-setuptools
 BuildRequires:	python-devel
 
-#Requires:       python-werkzeug 
+Requires:       python-werkzeug 
 Requires:       python-sphinx
 Requires:       python-jinja2
-#Requires:	    python-itsdangerous
+Requires:	    python-itsdangerous
 
 %description
 Flask is called a “micro-framework” because the idea to keep the core
