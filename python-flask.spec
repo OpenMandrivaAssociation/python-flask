@@ -49,6 +49,6 @@ rm -rf Flask.egg-info/
 %files
 %license LICENSE.rst
 %doc CHANGES.rst README.rst
-%{_bindir}/%{modname}*
+#{_bindir}/%{modname}*
 %{python_sitelib}/*.egg-info
 %{python_sitelib}/flask
