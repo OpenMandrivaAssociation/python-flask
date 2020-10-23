@@ -1,7 +1,7 @@
 %global srcname Flask
 
 Name:           python-flask
-Version:        1.1.1
+Version:        1.1.2
 Release:        1
 Summary:        A micro-framework for Python based on Werkzeug, Jinja 2 and good intentions
 Group:          Development/Python
