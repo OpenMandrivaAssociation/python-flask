@@ -1,13 +1,13 @@
 %global srcname Flask
 
 Name:           python-flask
-Version:        1.1.2
-Release:        1
+Version:	2.0.3
+Release:	1
 Summary:        A micro-framework for Python based on Werkzeug, Jinja 2 and good intentions
 Group:          Development/Python
 License:        BSD
 URL:            http://flask.pocoo.org/
-Source0:        http://pypi.python.org/packages/source/F/Flask/%{srcname}-%{version}.tar.gz
+Source0:	https://files.pythonhosted.org/packages/84/9d/66347e6b3e2eb78647392d3969c23bdc2d8b2fdc32bd078c817c15cb81ad/Flask-2.0.3.tar.gz
 BuildArch:      noarch
 
 BuildRequires:	graphviz
