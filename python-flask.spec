@@ -2,7 +2,7 @@
 
 Name:           python-flask
 Version:	2.0.3
-Release:	2
+Release:	3
 Summary:        A micro-framework for Python based on Werkzeug, Jinja 2 and good intentions
 Group:          Development/Python
 License:        BSD
