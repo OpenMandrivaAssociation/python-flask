@@ -1,28 +1,28 @@
-%global srcname Flask
+%global srcname flask
 
 Name:           python-flask
-Version:	2.0.3
-Release:	4
+Version:	3.1.3
+Release:	1
 Summary:        A micro-framework for Python based on Werkzeug, Jinja 2 and good intentions
 Group:          Development/Python
 License:        BSD
-URL:            https://flask.pocoo.org/
-Source0:	https://files.pythonhosted.org/packages/84/9d/66347e6b3e2eb78647392d3969c23bdc2d8b2fdc32bd078c817c15cb81ad/Flask-2.0.3.tar.gz
+URL:            https://flask.palletsprojects.com/en/stable/
+Source0:	https://files.pythonhosted.org/packages/source/f/flask/flask-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:	graphviz
 
-BuildRequires:  python-werkzeug 
-BuildRequires:  python-sphinx
-BuildRequires:	python-itsdangerous
-BuildRequires:  python-jinja2
-BuildRequires:	python-setuptools
-BuildRequires:	python-devel
+BuildRequires:  python%{pyver}dist(werkzeug)
+BuildRequires:  python%{pyver}dist(sphinx)
+BuildRequires:	python%{pyver}dist(itsdangerous)
+BuildRequires:  python%{pyver}dist(jinja2)
+BuildRequires:	python%{pyver}dist(setuptools)
+BuildRequires:	pkgconfig(python3)
 
-Requires:       python-werkzeug 
-Requires:       python-sphinx
-Requires:       python-jinja2
-Requires:	    python-itsdangerous
+Requires:       python%{pyver}dist(werkzeug)
+Requires:       python%{pyver}dist(sphinx)
+Requires:       python%{pyver}dist(jinja2)
+Requires:	python%{pyver}dist(itsdangerous)
 
 %description
 Flask is called a “micro-framework” because the idea to keep the core
@@ -47,8 +47,7 @@ rm -rf Flask.egg-info/
 %py_install
 
 %files
-%license LICENSE.rst
-%doc CHANGES.rst README.rst
+%doc CHANGES.rst
 %{_bindir}/flask
-%{python_sitelib}/*.egg-info
+%{python_sitelib}/*.dist-info
 %{python_sitelib}/flask
