@@ -2,7 +2,7 @@
 
 Name:           python-flask
 Version:	3.1.3
-Release:	1
+Release:	2
 Summary:        A micro-framework for Python based on Werkzeug, Jinja 2 and good intentions
 Group:          Development/Python
 License:        BSD
@@ -17,6 +17,9 @@ BuildRequires:  python%{pyver}dist(sphinx)
 BuildRequires:	python%{pyver}dist(itsdangerous)
 BuildRequires:  python%{pyver}dist(jinja2)
 BuildRequires:	python%{pyver}dist(setuptools)
+BuildRequires:	python%{pyver}dist(pip)
+BuildRequires:	python%{pyver}dist(wheel)
+BuildRequires:	python%{pyver}dist(flit-core)
 BuildRequires:	pkgconfig(python3)
 
 Requires:       python%{pyver}dist(werkzeug)
@@ -39,6 +42,8 @@ authentication technologies and more.
 
 # drop bundled egg-info
 rm -rf Flask.egg-info/
+# 3.1.3 already uses [project] metadata. Cooker flit-core is 4.
+sed -i 's/flit_core>=3.11,<4/flit_core>=3.11/' pyproject.toml
 
 %build
 %py_build
